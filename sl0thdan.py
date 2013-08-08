@@ -16,6 +16,7 @@ def menu():
     print "[6] Exit script"
     print
     select_mod()
+
 def select_mod():
     menu_select = raw_input("Please enter an option: ")
     if menu_select == "1":
@@ -59,6 +60,7 @@ def sub_search(api):
     except Exception, e:
         print 'Error: %s' % e
         menu()
+
 def host_search(api):
     res_out = open("HOST-RESULTS.txt","a")
     prefix = "hostname:"
@@ -84,6 +86,7 @@ def host_search(api):
     except Exception, e:
         print 'Error: %s' % e
         menu()
+
 def print_search(api):
     res_out = open("PRINTER-RESULTS.txt","a")
     prefix = "org:"
@@ -109,6 +112,7 @@ def print_search(api):
     except Exception, e:
         print 'Error: %s' % e
         menu()
+
 def port_search(api):
     res_out = open("PORT-RESULTS.txt","a")
     prefix = "org:"
@@ -136,6 +140,7 @@ def port_search(api):
     except Exception, e:
         print 'Error: %s' % e
         menu()
+
 def sploit_search(api):
     res_out = open("METASPLOIT-RESULTS.txt","a")
     query = raw_input("Enter what you want to look for:")
@@ -148,6 +153,6 @@ def sploit_search(api):
         print "Results have been exported to: METASPLOIT-RESULTS.txt"
         menu()
     except Exception, e:
-        print 'Error: %s' %e
+        print 'Error: %s' % e
         menu()            
 menu()
