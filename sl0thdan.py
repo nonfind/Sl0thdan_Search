@@ -12,7 +12,8 @@ def menu():
     print "[2] Search by hostname (ex: computing.site.com)"
     print "[3] Search for printers by organization (ex: Microsoft)"
     print "[4] Search for ports by organization (supported ports:http://www.shodanhq.com/help/filters#port)"
-    print "[5] Exit script"
+    print "[5] Seach Metasploit modules (useful if you find something good)
+    print "[6] Exit script"
     print
     select_mod()
 def select_mod():
@@ -26,6 +27,8 @@ def select_mod():
     elif menu_select == "4":
         port_search(api)
     elif menu_select == "5":
+        sploit_search(api)
+    elif menu_select == "6":
         exit()
     else:
         print "please enter a valid choice"
@@ -133,5 +136,18 @@ def port_search(api):
     except Exception, e:
         print 'Error: %s' % e
         menu()
-            
+def sploit_search(api):
+    res_out = open("METASPLOIT-RESULTS.txt","a")
+    query = raw_input("Enter what you want to look for:")
+    search_query = api.msf.search(query)
+    print 'Metasploit Modules Found: %s' % search_query['total']
+    try:
+        for module in search_query['matches']:
+            print >>res_out,'%s: %s' % (module['type'], module['name'])
+        res_out.close()
+        print "Results have been exported to: METASPLOIT-RESULTS.txt"
+        menu()
+    except Exception, e:
+        print 'Error: %s' %e
+        menu()            
 menu()
