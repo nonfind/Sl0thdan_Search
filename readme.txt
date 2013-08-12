@@ -11,6 +11,9 @@ YOU NEED THE SHODAN LIBRARY!!!!
 
 easy_install shodan
 
+Windows is not fun because it doesn't always create links to things. So, you may have to download easy_install and do everything 
+manually.
+
 
 NOTE: to use the subnet search, you will need access to the unlocked shodan api. It limits you to 100 queries a month,
 which isn't bad at all for such a nice service.
